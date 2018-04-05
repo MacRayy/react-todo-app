@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import './App.css'
+
+import TodoItem from './todo-item'
 
 const todos = [
 	{
@@ -50,9 +51,10 @@ class App extends Component {
 				{
 					this.state.todos.map(todo => {
 						return (
-							<div key={todo.id}>
-								<span>{todo.name}</span>
-							</div>
+							<TodoItem
+								key={todo.id}
+								{...todo}
+							/>
 						)
 					})
 				}
