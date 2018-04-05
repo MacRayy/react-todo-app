@@ -23,15 +23,39 @@ const todos = [
 localStorage.setItem('todos', JSON.stringify(todos))
 
 class App extends Component {
-	componentWillMount() {
-		const todos = JSON.parse(localStorage.getItem('todos'))
-		console.log(todos)
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			todos: []
+		}
 	}
+
+	componentWillMount() {
+		this.getTodos()
+	}
+
+	getTodos() {
+		const todos = JSON.parse(localStorage.getItem('todos'))
+
+		this.setState({ todos })
+	}
+
 
 	render() {
 		return (
 			<div className="App">
 				<h1>TODO app</h1>
+
+				{
+					this.state.todos.map(todo => {
+						return (
+							<div key={todo.id}>
+								<span>{todo.name}</span>
+							</div>
+						)
+					})
+				}
 			</div>
 		)
 	}
