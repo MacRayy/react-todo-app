@@ -28,7 +28,7 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			todos: []
+			todos: JSON.parse(localStorage.getItem('todos'))
 		}
 
 		this.onDelete = this.onDelete.bind(this)
@@ -40,7 +40,7 @@ class App extends Component {
 	}
 
 	getTodos() {
-		return JSON.parse(localStorage.getItem('todos'))
+		return this.state.todos
 
 	}
 
