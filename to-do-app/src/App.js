@@ -2,20 +2,21 @@ import React, { Component } from 'react'
 import './App.css'
 
 import TodoItem from './todo-item'
+import AddTodo from './add-todo'
 
 const todos = [
 	{
-		name: 'wlak with dog',
+		todo: 'wlak with dog',
 		id: 1,
 		done: true
 	},
 	{
-		name: 'learn react',
+		todo: 'learn react',
 		id: 2,
 		done: false
 	},
 	{
-		name: 'drink water',
+		todo: 'drink water',
 		id: 3,
 		done: false
 	}
@@ -28,9 +29,11 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			todos: JSON.parse(localStorage.getItem('todos'))
+			todos: JSON.parse(localStorage.getItem('todos')),
+			lastId: 0
 		}
 
+		this.onAdd = this.onAdd.bind(this)
 		this.onDelete = this.onDelete.bind(this)
 	}
 
@@ -39,9 +42,30 @@ class App extends Component {
 		this.setState({ todos })
 	}
 
+	componentDidMount() {
+		this.state.lastId = this.state.todos[0] !== undefined ? this.state.todos[this.state.todos.length - 1].id : 0
+	}
+
 	getTodos() {
 		return this.state.todos
 
+	}
+
+	setId() {
+		return this.state.lastId = this.state.lastId + 1
+	}
+
+	onAdd(todo) {
+		const todos = this.getTodos()
+		let id = this.setId()
+
+		todos.push({
+			todo,
+			done: false,
+			id: id
+		})
+
+		console.log(todos)
 	}
 
 	onDelete(id) {
@@ -61,6 +85,10 @@ class App extends Component {
 		return (
 			<div className="App">
 				<h1>TODO app</h1>
+
+				<AddTodo
+					onAdd={this.onAdd}
+				/>
 
 				{
 					this.state.todos.map(todo => {

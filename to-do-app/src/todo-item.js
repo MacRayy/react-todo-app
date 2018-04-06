@@ -14,11 +14,11 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { name, id, done } = this.props
+		const { todo, id, done } = this.props
 
 		return (
 			<div>
-				<span>{name}</span>
+				<span>{todo}</span>
 				{` | `}
 				<button onClick={this.onDelete}>Delete</button>
 			</div>
