@@ -36,16 +36,24 @@ class App extends Component {
 
 	componentWillMount() {
 		this.getTodos()
-	}
-
-	getTodos() {
-		const todos = JSON.parse(localStorage.getItem('todos'))
-
 		this.setState({ todos })
 	}
 
+	getTodos() {
+		return JSON.parse(localStorage.getItem('todos'))
+
+	}
+
 	onDelete(id) {
-		console.log(id)
+		const todos = this.getTodos()
+
+		const filteredTodos = todos.filter(todo => {
+			return todo.id !== id
+		})
+
+		console.log(filteredTodos)
+
+		this.setState({ todos: filteredTodos })
 	}
 
 

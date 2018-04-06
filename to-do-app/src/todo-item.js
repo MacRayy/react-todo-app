@@ -14,7 +14,7 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { name, id, done, onDelete } = this.props
+		const { name, id, done } = this.props
 
 		return (
 			<div>
