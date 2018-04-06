@@ -19,6 +19,11 @@ const todos = [
 		todo: 'drink water',
 		id: 3,
 		done: false
+	},
+	{
+		todo: 'drink water',
+		id: 4,
+		done: false
 	}
 ]
 
@@ -35,6 +40,7 @@ class App extends Component {
 
 		this.onAdd = this.onAdd.bind(this)
 		this.onDelete = this.onDelete.bind(this)
+		this.onEditSubmit = this.onEditSubmit.bind(this)
 	}
 
 	componentWillMount() {
@@ -61,11 +67,24 @@ class App extends Component {
 
 		todos.push({
 			todo,
-			done: false,
-			id: id
+			id: id,
+			done: false
 		})
 
-		console.log(todos)
+		this.setState({ todos: todos })
+	}
+
+	onEditSubmit(todo, id) {
+		let todos = this.getTodos()
+		todos = todos.map(todoItem => {
+			if (todoItem.id === id) {
+				todoItem.todo = todo
+			}
+			return todoItem
+		})
+
+
+		this.setState({ todos: todos })
 	}
 
 	onDelete(id) {
@@ -74,12 +93,8 @@ class App extends Component {
 		const filteredTodos = todos.filter(todo => {
 			return todo.id !== id
 		})
-
-		console.log(filteredTodos)
-
 		this.setState({ todos: filteredTodos })
 	}
-
 
 	render() {
 		return (
@@ -97,6 +112,7 @@ class App extends Component {
 								key={todo.id}
 								{...todo}
 								onDelete={this.onDelete}
+								onEditSubmit={this.onEditSubmit}
 							/>
 						)
 					})
