@@ -30,6 +30,8 @@ class App extends Component {
 		this.state = {
 			todos: []
 		}
+
+		this.onDelete = this.onDelete.bind(this)
 	}
 
 	componentWillMount() {
@@ -40,6 +42,10 @@ class App extends Component {
 		const todos = JSON.parse(localStorage.getItem('todos'))
 
 		this.setState({ todos })
+	}
+
+	onDelete(id) {
+		console.log(id)
 	}
 
 
@@ -54,6 +60,7 @@ class App extends Component {
 							<TodoItem
 								key={todo.id}
 								{...todo}
+								onDelete={this.onDelete}
 							/>
 						)
 					})
