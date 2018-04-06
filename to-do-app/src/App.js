@@ -49,16 +49,21 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.state.lastId = this.state.todos[0] !== undefined ? this.state.todos[this.state.todos.length - 1].id : 0
+		this.setState({ lastId: this.getTodos()[0] !== undefined ? this.getTodos()[this.getTodos().length - 1].id : 0 })
 	}
 
 	getTodos() {
 		return this.state.todos
+	}
 
+	getLastId() {
+		return this.state.lastId
 	}
 
 	setId() {
-		return this.state.lastId = this.state.lastId + 1
+		let newId = this.getLastId() + 1
+		this.setState({ lastId: newId })
+		return newId
 	}
 
 	onAdd(todo) {
@@ -67,11 +72,12 @@ class App extends Component {
 
 		todos.push({
 			todo,
-			id: id,
-			done: false
+			done: false,
+			id: id
 		})
 
 		this.setState({ todos: todos })
+		console.log(this.getTodos());
 	}
 
 	onEditSubmit(todo, id) {
