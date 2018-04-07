@@ -17,10 +17,10 @@ class AddTodo extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.onSubmit}>
-				<h3>Add TODO</h3>
-				<input placeholder="I also have to do..." ref={todoInput => this.todoInput = todoInput}/>
-				<button>Add</button>
+			<form onSubmit={this.onSubmit} className="add-todo">
+				<h3 className="h3">Add todo</h3>
+				<input className="add-todo__input" placeholder="I also have to do..." ref={todoInput => this.todoInput = todoInput}/>
+				<button className="btn">Add</button>
 			</form>
 		)
 	}

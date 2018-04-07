@@ -16,12 +16,12 @@ const todos = [
 		isDone: false
 	},
 	{
-		todo: 'drink water',
+		todo: 'watch star wars',
 		id: 3,
 		isDone: false
 	},
 	{
-		todo: 'drink water',
+		todo: 'find the droids',
 		id: 4,
 		isDone: false
 	}
@@ -116,26 +116,58 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<h1>TODO app</h1>
+				<header className="header">
+					<h1 className="h1">Do or do not</h1>
+					<h2 className="h2">There is no try</h2>
+				</header>
 
 				<AddTodo
 					onAdd={this.onAdd}
 				/>
-				<h3>TODOS</h3>
-				{
-					this.state.todos.map(todo => {
-						return (
-							<TodoItem
-								key={todo.id}
-								{...todo}
-								onDelete={this.onDelete}
-								onEditSubmit={this.onEditSubmit}
-								onCheck={this.onCheck}
-							/>
-						)
-					})
-				}
+
+				<main className="main-content">
+					<div className="todos">
+						<h3 className="h3">todos</h3>
+						{
+							this.state.todos.map(todo => {
+								let todoList = []
+								if(!todo.isDone) {
+									todoList =
+										<TodoItem
+											key={todo.id}
+											{...todo}
+											onDelete={this.onDelete}
+											onEditSubmit={this.onEditSubmit}
+											onCheck={this.onCheck}
+										/>
+								}
+								return todoList
+							})
+						}
+					</div>
+
+					<div className="done-todos">
+						<h3 className="h3">done</h3>
+						{
+							this.state.todos.map(todo => {
+								let todoList = []
+								if(todo.isDone) {
+									todoList =
+										<TodoItem
+											key={todo.id}
+											{...todo}
+											onDelete={this.onDelete}
+											onEditSubmit={this.onEditSubmit}
+											onCheck={this.onCheck}
+										/>
+								}
+								return todoList
+							})
+						}
+					</div>
+				</main>
 			</div>
+
 		)
 	}
 }

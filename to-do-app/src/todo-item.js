@@ -42,28 +42,27 @@ class TodoItem extends Component {
 		const { todo, id, isDone } = this.props
 
 		return (
-			<main>
+			<div className="todo-container">
 				{
 					this.state.isEdit
 						? (
-							<form onSubmit={this.onEditSubmit}>
-								<input defaultValue={todo} ref={todoInput => this.todoInput = todoInput}/>
-								<button>Save</button>
+							<form onSubmit={this.onEditSubmit} className="todo">
+								<input className="todo__input" defaultValue={todo} ref={todoInput => this.todoInput = todoInput}/>
+								<button className="btn">Save</button>
 							</form>
 						)
 						: (
-							<div>
-								<span>{todo}</span>
-								{` | `}
-								<button onClick={this.onEdit}>Edit</button>
-								{` | `}
-								<button onClick={this.onDelete}>Delete</button>
-								{` | `}
-								<button onClick={this.onCheck}>Done: {isDone.toString()}</button>
+							<div className="todo">
+								<p className="todo__text">{todo}</p>
+								<div>
+									<button className="btn" onClick={this.onEdit}>Edit</button>
+									<button className="btn" onClick={this.onDelete}>Delete</button>
+									<button className="btn" onClick={this.onCheck}>Done: {isDone.toString()}</button>
+								</div>
 							</div>
 						)
 				}
-			</main>
+			</div>
 		)
 	}
 }
