@@ -39,7 +39,7 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { todo, id, isDone } = this.props
+		const { todo, isDone } = this.props
 
 		return (
 			<div className="todo-container">

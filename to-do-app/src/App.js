@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import './App.scss'
 
 import TodoItem from './todo-item'
 import AddTodo from './add-todo'
