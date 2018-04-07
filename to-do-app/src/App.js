@@ -8,22 +8,22 @@ const todos = [
 	{
 		todo: 'wlak with dog',
 		id: 1,
-		done: true
+		isDone: true
 	},
 	{
 		todo: 'learn react',
 		id: 2,
-		done: false
+		isDone: false
 	},
 	{
 		todo: 'drink water',
 		id: 3,
-		done: false
+		isDone: false
 	},
 	{
 		todo: 'drink water',
 		id: 4,
-		done: false
+		isDone: false
 	}
 ]
 
@@ -41,6 +41,7 @@ class App extends Component {
 		this.onAdd = this.onAdd.bind(this)
 		this.onDelete = this.onDelete.bind(this)
 		this.onEditSubmit = this.onEditSubmit.bind(this)
+		this.onCheck = this.onCheck.bind(this)
 	}
 
 	componentWillMount() {
@@ -72,12 +73,11 @@ class App extends Component {
 
 		todos.push({
 			todo,
-			done: false,
+			isDone: false,
 			id: id
 		})
 
 		this.setState({ todos: todos })
-		console.log(this.getTodos());
 	}
 
 	onEditSubmit(todo, id) {
@@ -88,7 +88,6 @@ class App extends Component {
 			}
 			return todoItem
 		})
-
 
 		this.setState({ todos: todos })
 	}
@@ -102,6 +101,18 @@ class App extends Component {
 		this.setState({ todos: filteredTodos })
 	}
 
+	onCheck(id) {
+		let todos = this.getTodos()
+		todos = todos.map(todoItem => {
+			if (todoItem.id === id) {
+				todoItem.isDone = !todoItem.isDone
+			}
+			return todoItem
+		})
+
+		this.setState({ todos: todos })
+	}
+
 	render() {
 		return (
 			<div className="App">
@@ -110,7 +121,7 @@ class App extends Component {
 				<AddTodo
 					onAdd={this.onAdd}
 				/>
-
+				<h3>TODOS</h3>
 				{
 					this.state.todos.map(todo => {
 						return (
@@ -119,6 +130,7 @@ class App extends Component {
 								{...todo}
 								onDelete={this.onDelete}
 								onEditSubmit={this.onEditSubmit}
+								onCheck={this.onCheck}
 							/>
 						)
 					})

@@ -11,6 +11,7 @@ class TodoItem extends Component {
 		this.onDelete = this.onDelete.bind(this)
 		this.onEdit = this.onEdit.bind(this)
 		this.onEditSubmit = this.onEditSubmit.bind(this)
+		this.onCheck = this.onCheck.bind(this)
 	}
 
 	onEdit() {
@@ -28,14 +29,20 @@ class TodoItem extends Component {
 	onDelete() {
 		const { onDelete, id } = this.props
 
-		onDelete(this.props.id)
+		onDelete(id)
+	}
+
+	onCheck() {
+		const { onCheck, id } = this.props
+
+		onCheck(id)
 	}
 
 	render() {
-		const { todo, id, done } = this.props
+		const { todo, id, isDone } = this.props
 
 		return (
-			<div>
+			<main>
 				{
 					this.state.isEdit
 						? (
@@ -51,10 +58,12 @@ class TodoItem extends Component {
 								<button onClick={this.onEdit}>Edit</button>
 								{` | `}
 								<button onClick={this.onDelete}>Delete</button>
+								{` | `}
+								<button onClick={this.onCheck}>Done: {isDone.toString()}</button>
 							</div>
 						)
 				}
-			</div>
+			</main>
 		)
 	}
 }
