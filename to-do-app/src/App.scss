@@ -20,6 +20,8 @@
   --color-white: #fff;
 
   --shadow: 8px 8px 0px 0px rgba(0,0,0,0.9);
+
+  --border--cyan: 4px double var(--color-cyan);
 }
 
 ::selection {
@@ -35,7 +37,7 @@ body {
   background-color: var(--color-norton-blue);
   min-height: 95vh;
   color: var(--color-cyan);
-  border: 4px double var(--color-cyan);
+  border: var(--border--cyan);
   padding: 1rem;
   margin: 0.5rem;
   display: grid;
@@ -102,25 +104,25 @@ body {
     align-items: center;
 
     &::after {
-      content: '';
-      width: .5rem;
-      height: 1rem;
-      background-color: var(--color-red);
-      animation: pulse 1s step-start infinite;
       animation-delay: .5s;
+      animation: pulse 1s step-start infinite;
+      background-color: var(--color-red);
+      content: '';
+      height: 1rem;
+      width: .5rem;
     }
   }
 
   &__input {
-    font-family: inherit;
-    grid-column: 2 / -1;
     background-color: transparent;
     border: 0;
-    outline: 0;
-    font-size: inherit;
     caret-color: var(--color-red);
-    padding: 0;
     color: currentColor;
+    font-family: inherit;
+    font-size: inherit;
+    grid-column: 2 / -1;
+    outline: 0;
+    padding: 0;
   }
 
   &__btn {
@@ -138,12 +140,17 @@ body {
 
 // TODOS
 .todos {
+  border: var(--border--cyan);
+  padding: 1rem;
+  margin: 0.5rem;
 
 }
 
 // DONE TODOS
 .done-todos {
-
+  border: var(--border--cyan);
+  padding: 1rem;
+  margin: 0.5rem;
 }
 
 // BTN
@@ -152,10 +159,11 @@ body {
   border: 0;
   box-shadow: var(--shadow);
   color: var(--color-gray);
-  font-family: inherit;
-  padding: 0.3rem 2.5rem;
-  outline: 0;
   cursor: pointer;
+  font-family: inherit;
+  outline: 0;
+  padding: 0.3rem 2.5rem;
+  transition: .2s all ease;
 
   &:hover,
   &:active {

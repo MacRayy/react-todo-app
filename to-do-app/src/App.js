@@ -9,22 +9,26 @@ const todos = [
 	{
 		todo: 'wlak with dog',
 		id: 1,
-		isDone: true
+		isDone: true,
+		isDoneHTML: 'Done (*)'
 	},
 	{
 		todo: 'learn react',
 		id: 2,
-		isDone: false
+		isDone: false,
+		isDoneHTML: 'Done ( )'
 	},
 	{
 		todo: 'watch star wars',
 		id: 3,
-		isDone: false
+		isDone: false,
+		isDoneHTML: 'Done ( )'
 	},
 	{
 		todo: 'find the droids',
 		id: 4,
-		isDone: false
+		isDone: false,
+		isDoneHTML: 'Done ( )'
 	}
 ]
 
@@ -75,7 +79,8 @@ class App extends Component {
 		todos.push({
 			todo,
 			isDone: false,
-			id: id
+			id: id,
+			isDoneHTML: 'Done ( )'
 		})
 
 		this.setState({ todos: todos })
@@ -107,6 +112,7 @@ class App extends Component {
 		todos = todos.map(todoItem => {
 			if (todoItem.id === id) {
 				todoItem.isDone = !todoItem.isDone
+				todoItem.isDoneHTML = (todoItem.isDoneHTML === 'Done (*)') ? 'Done ( )' : 'Done (*)'
 			}
 			return todoItem
 		})

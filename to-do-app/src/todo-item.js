@@ -30,6 +30,8 @@ class TodoItem extends Component {
 		const { onDelete, id } = this.props
 
 		onDelete(id)
+
+
 	}
 
 	onCheck() {
@@ -39,7 +41,7 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { todo, isDone } = this.props
+		const { todo, id, isDone, isDoneHTML } = this.props
 
 		return (
 			<div className="todo-container">
@@ -58,6 +60,9 @@ class TodoItem extends Component {
 									<button className="btn" onClick={this.onEdit}>Edit</button>
 									<button className="btn" onClick={this.onDelete}>Delete</button>
 									<button className="btn" onClick={this.onCheck}>Done: {isDone.toString()}</button>
+
+									<label htmlFor={id} ref={checkLabel => this.checkLabel = checkLabel}>{isDoneHTML}</label>
+									<input id={id} type="checkbox" className="check-box" onClick={this.onCheck}/>
 								</div>
 							</section>
 						)
