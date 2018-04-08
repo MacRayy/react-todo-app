@@ -41,28 +41,33 @@ class TodoItem extends Component {
 	}
 
 	render() {
-		const { todo, id, isDone, isDoneHTML } = this.props
+		const { todo, id, isDoneHTML } = this.props
 
 		return (
 			<div className="todo-container">
 				{
 					this.state.isEdit
 						? (
-							<form onSubmit={this.onEditSubmit} className="todo">
-								<input className="todo__input" defaultValue={todo} ref={todoInput => this.todoInput = todoInput}/>
-								<button className="btn">Save</button>
-							</form>
+							<div className="todo-edit__wrapper">
+								<form onSubmit={this.onEditSubmit} className="todo-edit">
+									<span className="todo-edit__text">Edit:</span>
+									<input className="todo-edit__input" defaultValue={todo} ref={todoInput => this.todoInput = todoInput}/>
+									<button className="todo-edit__btn btn">Save</button>
+								</form>
+							</div>
 						)
 						: (
 							<section className="todo">
 								<p className="todo__text">{todo}</p>
-								<div>
+
+								<div className="todo__checkbox-container">
+									<label className="todo__label" htmlFor={id} ref={checkLabel => this.checkLabel = checkLabel}>{isDoneHTML}</label>
+									<input id={id} type="checkbox" className="todo__checkbox" onClick={this.onCheck}/>
+								</div>
+
+								<div className="todo__btn-container">
 									<button className="btn" onClick={this.onEdit}>Edit</button>
 									<button className="btn" onClick={this.onDelete}>Delete</button>
-									<button className="btn" onClick={this.onCheck}>Done: {isDone.toString()}</button>
-
-									<label htmlFor={id} ref={checkLabel => this.checkLabel = checkLabel}>{isDoneHTML}</label>
-									<input id={id} type="checkbox" className="check-box" onClick={this.onCheck}/>
 								</div>
 							</section>
 						)

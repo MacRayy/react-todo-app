@@ -25,7 +25,7 @@ const todos = [
 		isDoneHTML: 'Done ( )'
 	},
 	{
-		todo: 'find the droids',
+		todo: 'find the droids in the dune see and bring back to uncle Owen',
 		id: 4,
 		isDone: false,
 		isDoneHTML: 'Done ( )'
