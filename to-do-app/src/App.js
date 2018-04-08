@@ -118,8 +118,8 @@ class App extends Component {
 		return (
 			<div className="App">
 				<header className="header">
-					<h1 className="h1">Do or do not</h1>
-					<h2 className="h2">There is no try</h2>
+					<h1 className="h1 margin-bottom-small">Do or do not</h1>
+					<h2 className="h2 margin-bottom-small">There is no try</h2>
 				</header>
 
 				<AddTodo
@@ -128,7 +128,7 @@ class App extends Component {
 
 				<main className="main-content">
 					<div className="todos">
-						<h3 className="h3">todos</h3>
+						<h3 className="h3 margin-bottom-small">>todos</h3>
 						{
 							this.state.todos.map(todo => {
 								let todoList = []
@@ -148,7 +148,7 @@ class App extends Component {
 					</div>
 
 					<div className="done-todos">
-						<h3 className="h3">done</h3>
+						<h3 className="h3 margin-bottom-small">>done</h3>
 						{
 							this.state.todos.map(todo => {
 								let todoList = []

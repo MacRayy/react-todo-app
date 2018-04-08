@@ -7,6 +7,10 @@ class AddTodo extends Component {
 		this.onSubmit = this.onSubmit.bind(this)
 	}
 
+	componentDidMount() {
+		this.todoInput.focus()
+	}
+
 	onSubmit(event) {
 		event.preventDefault()
 
@@ -17,11 +21,14 @@ class AddTodo extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.onSubmit} className="add-todo">
-				<h3 className="h3">Add todo</h3>
-				<input className="add-todo__input" placeholder="I also have to do..." ref={todoInput => this.todoInput = todoInput}/>
-				<button className="btn">Add</button>
-			</form>
+			<section className="add-todo__wrapper">
+				<form onSubmit={this.onSubmit} className="add-todo">
+					<h3 className="h3 add-todo__header margin-bottom-small">>Add todo</h3>
+					<span className="add-todo__text">todo:</span>
+					<input className="add-todo__input" placeholder="" ref={todoInput => this.todoInput = todoInput}/>
+					<button className="add-todo__btn btn">Add</button>
+				</form>
+			</section>
 		)
 	}
 }

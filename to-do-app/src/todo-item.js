@@ -52,14 +52,14 @@ class TodoItem extends Component {
 							</form>
 						)
 						: (
-							<div className="todo">
+							<section className="todo">
 								<p className="todo__text">{todo}</p>
 								<div>
 									<button className="btn" onClick={this.onEdit}>Edit</button>
 									<button className="btn" onClick={this.onDelete}>Delete</button>
 									<button className="btn" onClick={this.onCheck}>Done: {isDone.toString()}</button>
 								</div>
-							</div>
+							</section>
 						)
 				}
 			</div>

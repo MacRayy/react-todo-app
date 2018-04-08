@@ -1,0 +1,181 @@
+// @fontface {
+//   font-family: 'Press Start 2P', cursive;
+//   src: url('https://fonts.googleapis.com/css?family=Press+Start+2P')
+// }
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+:root {
+  --color-norton-blue: #0515AC;
+
+  --color-red: #CE5730;
+
+  --color-cyan: #4BD3EF;
+  --color-cyan-dark: #1AA8AE;
+
+  --color-gray: #A8A8A8;
+  --color-yellow: #FFFD65;
+
+  --color-black: #000;
+  --color-white: #fff;
+
+  --shadow: 8px 8px 0px 0px rgba(0,0,0,0.9);
+}
+
+::selection {
+  background: var(--color-cyan-dark);
+  color: var(--color-norton-blue);
+}
+
+body {
+  background-color: var(--color-norton-blue);
+}
+
+.App {
+  background-color: var(--color-norton-blue);
+  min-height: 95vh;
+  color: var(--color-cyan);
+  border: 4px double var(--color-cyan);
+  padding: 1rem;
+  margin: 0.5rem;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-rows: minmax(min-content, 10vh) min-content 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.h1 {
+  font-size: 2rem;
+}
+
+.h2 {
+  font-size: 1.5rem;
+}
+
+.h3 {
+  font-size: 1.3rem;
+}
+
+// HEADER
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+// ADD TODO
+.add-todo__wrapper {
+  align-items: stretch;
+  background-color: var(--color-cyan-dark);
+  background-color: var(--color-cyan-dark);
+  box-shadow: var(--shadow);
+  display: flex;
+  max-width: 50rem;
+  min-height: 10rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.add-todo {
+  align-items: center;
+  background-color: inherit;
+  border: 4px double black;
+  color: white;
+  display: grid;
+  flex-basis: 100%;
+  grid-row-gap: 1rem;
+  grid-template-columns: min-content repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 1rem;
+
+  &__header {
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    grid-column: 1 / 2;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: '';
+      width: .5rem;
+      height: 1rem;
+      background-color: var(--color-red);
+      animation: pulse 1s step-start infinite;
+      animation-delay: .5s;
+    }
+  }
+
+  &__input {
+    font-family: inherit;
+    grid-column: 2 / -1;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    font-size: inherit;
+    caret-color: var(--color-red);
+    padding: 0;
+    color: currentColor;
+  }
+
+  &__btn {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+.main-content {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, min-content);
+}
+
+// TODOS
+.todos {
+
+}
+
+// DONE TODOS
+.done-todos {
+
+}
+
+// BTN
+.btn {
+  background-color: white;
+  border: 0;
+  box-shadow: var(--shadow);
+  color: var(--color-gray);
+  font-family: inherit;
+  padding: 0.3rem 2.5rem;
+  outline: 0;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: var(--color-yellow);
+    color: var(--color-red);
+  }
+}
+
+// HELPERS
+.margin-bottom-small {
+  margin-bottom: 1rem;
+}
+
+// ANIMATION
+@keyframes pulse {
+  from, to {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
