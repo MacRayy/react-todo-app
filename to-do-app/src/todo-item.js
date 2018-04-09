@@ -30,8 +30,6 @@ class TodoItem extends Component {
 		const { onDelete, id } = this.props
 
 		onDelete(id)
-
-
 	}
 
 	onCheck() {
@@ -60,7 +58,7 @@ class TodoItem extends Component {
 							<section className="todo">
 								<p className="todo__text">{todo}</p>
 
-								<div className="todo__checkbox-container">
+								<div>
 									<label className="todo__label" htmlFor={id} ref={checkLabel => this.checkLabel = checkLabel}>{isDoneHTML}</label>
 									<input id={id} type="checkbox" className="todo__checkbox" onClick={this.onCheck}/>
 								</div>

@@ -7,10 +7,10 @@ import AddTodo from './add-todo'
 
 const todos = [
 	{
-		todo: 'wlak with dog',
+		todo: 'get the x-wing out of the swamp',
 		id: 1,
-		isDone: true,
-		isDoneHTML: 'Done (*)'
+		isDone: false,
+		isDoneHTML: 'Done ( )'
 	},
 	{
 		todo: 'learn react',
@@ -19,7 +19,7 @@ const todos = [
 		isDoneHTML: 'Done ( )'
 	},
 	{
-		todo: 'watch star wars',
+		todo: 'stole the Death Star plans',
 		id: 3,
 		isDone: false,
 		isDoneHTML: 'Done ( )'
@@ -27,8 +27,8 @@ const todos = [
 	{
 		todo: 'find the droids in the dune see and bring back to uncle Owen',
 		id: 4,
-		isDone: false,
-		isDoneHTML: 'Done ( )'
+		isDone: true,
+		isDoneHTML: 'Done (*)'
 	}
 ]
 

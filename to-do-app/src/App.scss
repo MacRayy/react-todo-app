@@ -2,16 +2,12 @@
 
 :root {
   --color-norton-blue: #0515AC;
-
   --color-red: #CE5730;
-
   --color-cyan: #4BD3EF;
   --color-cyan-dark: #1AA8AE;
-
   --color-gray: #A8A8A8;
   --color-gray-dark: #AAAAAA;
   --color-yellow: #FFFD65;
-
   --color-black: #000;
   --color-white: #fff;
 
@@ -126,6 +122,13 @@ body {
     grid-column: 1 / -1;
     justify-self: center;
   }
+
+  &__error {
+    color: var(--color-black);
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin: 1rem;
+  }
 }
 
 .main-content {
@@ -199,10 +202,6 @@ body {
   grid-template-columns: 1fr max-content;
   grid-template-rows: 1fr max-content;
 
-  &__input {
-
-  }
-
   &__text {
     border-right: 1px solid currentColor;
   }
@@ -211,10 +210,6 @@ body {
     display: flex;
     grid-column: 1 / -1;
     justify-content: space-evenly;
-  }
-
-  &__checkbox-container {
-
   }
 
   &__label {
