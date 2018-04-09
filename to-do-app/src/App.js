@@ -55,6 +55,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+		document.title = 'React Todo App NC'
 		this.setState({ lastId: this.getTodos()[0] !== undefined ? this.getTodos()[this.getTodos().length - 1].id : 0 })
 	}
 
